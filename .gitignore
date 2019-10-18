@@ -1,0 +1,15 @@
+.DS_Store
+config.js
+config.py
+twitter_credentials.json
+
+config.py
+config.js
+Test_GeoFile1982.json
+US_HistCounties_Gen05.json
+tl_2010_us_county10.json
+tl_2019_us_county.json
+tl_2008_us_county00.json 
+tl_2009_us_county00.json
+tl_2011_us_county.json
+tl_2012_us_county.json 
