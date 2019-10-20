@@ -27,3 +27,6 @@ Step 2: create a route called ‘/scrape’ that imports the ‘scrape_mars.py�
 Step 3: create a route ‘/’ that will query the MongoDB and transfer the Mars data into an HTML template for display.
 
 Step 4: create a HTML template file called ‘index.html’ to receive all of the Mars data in the dictionary and display it in the appropriate HTML elements.
+
+
+Data Boot Camp (C) 2019. All Rights Reserved.
