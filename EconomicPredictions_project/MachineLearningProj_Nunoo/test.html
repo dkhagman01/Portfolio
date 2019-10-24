@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <div id="title">
+        <h1> What is the chance of a Recession? </h1>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="test.css">
+</head>
+
+<body>
+    <div id="chartdiv"></div>
+    <div id="controllers">
+
+        <div class="spacing">
+            <label for="unemployment"> Unemployment Rate</label>
+            <input class="sliderstyle" id="unemployment" type="range" data-orientation="horizontal"
+                onchange="updatechart()">
+        </div>
+
+        <div class="spacing">
+            <label for="interestrate"> Interest Rate</label>
+            <input class="sliderstyle" id="interest" type="range" data-orientation="horizontal"
+                onchange="updatechart()">
+        </div>
+
+        <div class="spacing">
+            <label for="inflationrate"> Inflation Rate</label>
+            <input class="sliderstyle" id="inflation" type="range" data-orientation="horizontal"
+                onchange="updatechart()">
+        </div>
+
+        <div class="spacing">
+            <label for="housingstarts"> Housing Starts</label>
+            <input class="sliderstyle" id="housing" type="range" data-orientation="horizontal" onchange="updatechart()">
+        </div>
+
+
+        <div class="spacing">
+            <label for="earningschange"> Earnings Change</label>
+            <input class="sliderstyle" id="earnings" type="range" data-orientation="horizontal"
+                onchange="updatechart()">
+        </div>
+    </div>
+    <!-- <output></output> -->
+
+    <!-- <input id="ex13" type="text" data-slider-ticks="[-30, -20, -10, 0, 10, 20, 30]" data-slider-ticks-snap-bounds="30" data-slider-ticks-labels='["-30%", "-20%", "-10%", "0","10%","20%","30%"]'/> -->
+
+    <!-- Resources -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/material.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+    <script src="test.js"></script>
+
+</body>
+
+</html>

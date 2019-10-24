@@ -1,0 +1,59 @@
+
+body { background-color: #5a5a6e; color: #fff; }
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
+
+
+.sliderstyle {
+    color: #2ead2e;
+    /* transform: rotate(90deg); */
+    padding: 0px;
+    margin: 0px;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-around; 
+    align-items: center;  */
+ 
+  }
+
+.spacing label {
+    padding: 5px;
+    margin: 0px;
+    margin-left: 1px;
+
+  }
+
+
+#controllers {
+    margin: 35px;
+    /* flex-direction: column; */
+    /* justify-content: space-around;  */
+    /* align-items: center;  */
+    /* padding: 50px; */
+    
+  }
+  
+
+  
+  h1 {
+    font-size: 2.0em;
+    font-weight: 100;
+
+  }
+
+  span {
+    font-size: 0.8em;
+    font-weight: 100;
+
+  }
+  
+  output {
+    font-size: 1em;
+    padding: .1em;
+  }
+ 
+  
+
+

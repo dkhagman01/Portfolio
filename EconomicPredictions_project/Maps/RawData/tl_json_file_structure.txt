@@ -1,0 +1,20 @@
+
+tl_2008_us_county.json  (also 2009)
+{"type":"FeatureCollection", "features": [
+{"type":"Feature",
+"geometry":{"type":"Polygon","coordinates":[[[Numbers]]]},
+"properties":{"STATEFP00":"19","COUNTYFP00":"175",
+"CNTYIDFP00":"19175","NAME00":"Union",
+"NAMELSAD00":"Union County","LSAD00":"06","CLASSFP00":"H1","MTFCC00":"G4020","UR00":"M","FUNCSTAT00":"A"}},
+
+tl_2010_us_county.json 
+{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[Numbers]]]},
+"properties":{"STATEFP10":"02","COUNTYFP10":"013","COUNTYNS10":"01419964","GEOID10":"02013","NAME10":"Aleutians East","NAMELSAD10":"Aleutians East Borough","LSAD10":"04","CLASSFP10":"H1","MTFCC10":"G4020","CSAFP10":"","CBSAFP10":"","METDIVFP10":"","FUNCSTAT10":"A","ALAND10":18083148800,"AWATER10":20792209033,"INTPTLAT10":"+55.2437223","INTPTLON10":"-161.9507485"}},
+
+
+
+tl_2011_us_county.json (also 2012)
+{"type":"FeatureCollection", "features": [
+{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[Numbers]]]},
+"properties":{"STATEFP":"72","COUNTYFP":"045","COUNTYNS":"01804502","GEOID":"72045","NAME":"Comerío","NAMELSAD":"Comerío Municipio","LSAD":"13","CLASSFP":"H1","MTFCC":"G4020","CSAFP":"490","CBSAFP":"41980","METDIVFP":"","FUNCSTAT":"A","ALAND":73557132,"AWATER":319735,"INTPTLAT":"+18.2250402","INTPTLON":"-066.2202984"}},
+

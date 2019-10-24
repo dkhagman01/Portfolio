@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/static/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/static/assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Project 2: Economy at a Glance
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!-- CSS Files -->
+  <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/static/assets/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
+  <!-- Place your kit's code here -->
+  <script src="https://kit.fontawesome.com/a8c06e990a.js"></script>
+  <!-- CSS Files for Interactive Chart Used in Dashboard & Economic Indicators-->
+  <link rel="stylesheet" href="/static/assets/css/d3Style-d3Census.css">
+  <!-- d3 JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
+
+  <!--Maria's Code -->
+  <!-- Leaflet JS & CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+    integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+    crossorigin=""></script>
+
+  <!-- Leaflet-Parallax JS -->
+  <script type="text/javascript" src="/static/assets/js/leafletmap/leaflet-parallax.js"></script>
+
+  <!-- Javascript for leaflet slider -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="/static/assets/js/leafletmap/leaflet-timeline-slider.min.js"></script>
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="/static/assets/css/style-map.css">
+</head>
+
+<body class="" onresize="scatterPlot()">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="orange">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+      <div class="logo">
+        <img style="text-align:center" class="factor-img" src="/static/assets/img/econ-factor.jpg">
+        <h6 style="text-align:center" class="simple-text logo-normal">
+          <strong> Economic Health Factors</strong>
+        </h6>
+      </div>
+      <div class="sidebar-wrapper" id="sidebar-wrapper">
+        <ul class="nav">
+          <li class="active ">
+            <a href="/">
+              <i class="fas fa-columns"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li>
+            <a href="./indicators">
+              <i class="far fa-chart-bar"></i>
+              <p>States Economic Health</p>
+            </a>
+          </li>
+          <li>
+            <a href="./map">
+              <i class="far fa-cogs"></i>
+              <p>Unemployment Map</p>
+            </a>
+          </li>
+          <li>
+            <a href="./educationmap">
+              <i class="far fa-university"></i>
+              <p>Education Map</p>
+            </a>
+          </li>
+          <li>
+            <a href="./gdpmap">
+              <i class="far fa-map"></i>
+              <p>GDP Growth Map</p>
+            </a>
+          </li>
+          <li>
+            <a href="./incomemap">
+              <i class="far fa-hand-holding-usd"></i>
+              <p>Income Per Capita Map</p>
+            </a>
+          </li>
+          <li>
+            <a href="/stocktweeter">
+              <i class="fas fa-coins"></i>
+              <p>Stock Health Data</p>
+            </a>
+          </li>
+          <li>
+            <a href="./gdp">
+              <i class="fas fa-chart-line"></i>
+              <p>Gross Domestic Product</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel" id="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+            aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navigation">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/blog">
+                  <p>
+                    Blog
+                  </p>
+                  <i class="now-ui-icons text_bold"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/presentation">
+                  <p>
+                    Presentation
+                  </p>
+                  <i class="now-ui-icons business_badge"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/aboutus">
+                  <p>
+                    About Us
+                  </p>
+                  <i class="now-ui-icons users_single-02"></i>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <p>
+                    Market Health Factors
+                  </p>
+                  <i class="now-ui-icons business_money-coins"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="/">Dashboard</a>
+                  <a class="dropdown-item" href="/indicators">States Economic Health</a>
+                  <a class="dropdown-item" href="/map">US Unemployment Map</a>
+                  <a class="dropdown-item" href="/educationmap">US Education Map</a>
+                  <a class="dropdown-item" href="/gdpmap">US GDP Map</a>
+                  <a class="dropdown-item" href="/incomemap">Income Per Capita Map</a>
+                  <a class="dropdown-item" href="/stocktweeter">Stock Health Data</a>
+                  <a class="dropdown-item" href="/gdp">Gross Domestic Product</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="panel-header panel-header-sm" style="height: 100px">
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 mb-5" style="height: 514px">
+            <div class="card card-chart flex-column h-100">
+              <div class="card-header">
+                <h3 class="card-title" style="text-align:center;"><strong>Poverty vs Education</strong></h3>
+                <h5 class="card-category" style="text-align:center;">(Click on Chart to Learn More)</h5>
+              </div>
+              <div class="card-body">
+                <div class="chart-area" id="scatter" onclick="document.location='/indicators'">
+                  <!-- <canvas id="lineChartExample"></canvas> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h3 class="card-title" style="text-align:center;"><strong>Unemployment Map</strong></h3>
+                <h5 class="card-category" style="text-align:center;">(Click <a href="/map">Here</a>
+                  for More Details)</h5>
+              </div>
+              <div class="card-body">
+                <div id="map" style="height:400px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 col-md-12 d-flex align-items-stretch">
+            <div class="card">
+              <div class="card-header text-center">
+                <h3 class="card-title" style="text-align:center;"><strong>Recession Gauge</strong></h3>
+              </div>
+              <div class="card-body">
+                <div id="chartdiv" class="mb-3" style="height: 300px"></div>
+                <div id="controllers">
+
+                  <div class="spacing mb-3 d-flex justify-content-center">
+                    <label class="mr-3 ml-3" for="unemployment"> Unemployment Rate</label>
+                    <input class="sliderstyle" id="unemployment" type="range" data-orientation="horizontal"
+                      onchange="updatechart()">
+
+                    <label class="mr-3 ml-3" for="interestrate"> Interest Rate</label>
+                    <input class="sliderstyle" id="interest" type="range" data-orientation="horizontal"
+                      onchange="updatechart()">
+
+                    <label class="mr-3 ml-3" for="inflationrate"> Inflation Rate</label>
+                    <input class="sliderstyle" id="inflation" type="range" data-orientation="horizontal"
+                      onchange="updatechart()">
+                  </div>
+
+                  <div class="spacing d-flex justify-content-center">
+                    <label class="mr-3 ml-3" for="housingstarts"> Housing Starts</label>
+                    <input class="sliderstyle" id="housing" type="range" data-orientation="horizontal"
+                      onchange="updatechart()">
+
+                    <label class="mr-3 ml-3" for="earningschange"> Earnings Change</label>
+                    <input class="sliderstyle" id="earnings" type="range" data-orientation="horizontal"
+                      onchange="updatechart()">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12 d-flex align-items-stretch">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title" style="text-align:center;"><strong>US GDP Change (Q1:2016 - Q1:2019)</strong>
+                </h5>
+                <h5 class="card-category" style="text-align:center;">(Click <a href="/gdp">Here</a> to Learn More)</h5>
+              </div>
+              <div class="card-body">
+                <div id='graph' style="width:300px; height:400px; margin:0 auto;"> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--   Core JS Files   -->
+  <script src="/static/assets/js/core/jquery.min.js"></script>
+  <script src="/static/assets/js/core/popper.min.js"></script>
+  <script src="/static/assets/js/core/bootstrap.min.js"></script>
+  <script src="/static/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!-- Chart JS -->
+  <script src="/static/assets/js/plugins/chartjs.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="/static/assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="/static/assets/js/now-ui-dashboard.min.js?v=1.3.0" type="text/javascript"></script>
+
+  <!--Sandbox JS used for interactive chart-->
+  <script src="/static/assets/js/sandbox-dashboard.js"></script>
+  <!--Maria Contents-->
+  <!-- API key -->
+  <script type="text/javascript" src="/static/assets/js/leafletmap/config.js"></script>
+  <!-- JS  -->
+  <script type="text/javascript" src="/static/assets/js/leafletmap/logic.js"></script>
+  <!-- Philip's JS -->
+  <script type="text/javascript" src="/static/assets/js/nunoo2-dashboard.js"></script>
+  <!-- Gauge Resources -->
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/material.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+  <script src="/static/assets/js/test.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      // Javascript method's body can be found in assets/js/demos.js
+      //demo.initDashboardPageCharts();
+
+    });
+  </script>
+</body>
+
+</html>
